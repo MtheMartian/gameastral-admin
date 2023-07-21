@@ -1,0 +1,109 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\Views\\index.html",
+      "PackagePath": "staticwebassets\\Views\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\android-chrome-192x192.png",
+      "PackagePath": "staticwebassets\\android-chrome-192x192.png"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\android-chrome-512x512.png",
+      "PackagePath": "staticwebassets\\android-chrome-512x512.png"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\apple-touch-icon.png",
+      "PackagePath": "staticwebassets\\apple-touch-icon.png"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\asset-manifest.json",
+      "PackagePath": "staticwebassets\\asset-manifest.json"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\css\\main.0f8769c7.css",
+      "PackagePath": "staticwebassets\\css\\main.0f8769c7.css"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\css\\main.0f8769c7.css.map",
+      "PackagePath": "staticwebassets\\css\\main.0f8769c7.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\favicon-16x16.png",
+      "PackagePath": "staticwebassets\\favicon-16x16.png"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\favicon-32x32.png",
+      "PackagePath": "staticwebassets\\favicon-32x32.png"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\js\\787.eadd44b0.chunk.js",
+      "PackagePath": "staticwebassets\\js\\787.eadd44b0.chunk.js"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\js\\787.eadd44b0.chunk.js.map",
+      "PackagePath": "staticwebassets\\js\\787.eadd44b0.chunk.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\js\\main.0c2009bc.js",
+      "PackagePath": "staticwebassets\\js\\main.0c2009bc.js"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\js\\main.0c2009bc.js.LICENSE.txt",
+      "PackagePath": "staticwebassets\\js\\main.0c2009bc.js.LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\js\\main.0c2009bc.js.map",
+      "PackagePath": "staticwebassets\\js\\main.0c2009bc.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\js\\main.86be02c7.js",
+      "PackagePath": "staticwebassets\\js\\main.86be02c7.js"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\js\\main.86be02c7.js.LICENSE.txt",
+      "PackagePath": "staticwebassets\\js\\main.86be02c7.js.LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\js\\main.86be02c7.js.map",
+      "PackagePath": "staticwebassets\\js\\main.86be02c7.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\manifest.json",
+      "PackagePath": "staticwebassets\\manifest.json"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\reset-css.css",
+      "PackagePath": "staticwebassets\\reset-css.css"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\robots.txt",
+      "PackagePath": "staticwebassets\\robots.txt"
+    },
+    {
+      "Id": "C:\\Users\\Rapier\\source\\repos\\GameStarBackend\\GameStarBackend\\wwwroot\\site.webmanifest",
+      "PackagePath": "staticwebassets\\site.webmanifest"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.GameStarBackend.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.GameStarBackend.props",
+      "PackagePath": "build\\GameStarBackend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.GameStarBackend.props",
+      "PackagePath": "buildMultiTargeting\\GameStarBackend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.GameStarBackend.props",
+      "PackagePath": "buildTransitive\\GameStarBackend.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

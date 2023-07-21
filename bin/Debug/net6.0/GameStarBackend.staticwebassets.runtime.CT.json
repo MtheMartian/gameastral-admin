@@ -1,0 +1,187 @@
+{
+  "ContentRoots": [
+    "/src/wwwroot/"
+  ],
+  "Root": {
+    "Children": {
+      "android-chrome-192x192.png": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "android-chrome-192x192.png"
+        },
+        "Patterns": null
+      },
+      "android-chrome-512x512.png": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "android-chrome-512x512.png"
+        },
+        "Patterns": null
+      },
+      "apple-touch-icon.png": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "apple-touch-icon.png"
+        },
+        "Patterns": null
+      },
+      "asset-manifest.json": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "asset-manifest.json"
+        },
+        "Patterns": null
+      },
+      "css": {
+        "Children": {
+          "main.0f8769c7.css": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "css/main.0f8769c7.css"
+            },
+            "Patterns": null
+          },
+          "main.0f8769c7.css.map": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "css/main.0f8769c7.css.map"
+            },
+            "Patterns": null
+          }
+        },
+        "Asset": null,
+        "Patterns": null
+      },
+      "favicon-16x16.png": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "favicon-16x16.png"
+        },
+        "Patterns": null
+      },
+      "favicon-32x32.png": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "favicon-32x32.png"
+        },
+        "Patterns": null
+      },
+      "favicon.ico": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "favicon.ico"
+        },
+        "Patterns": null
+      },
+      "js": {
+        "Children": {
+          "787.eadd44b0.chunk.js": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "js/787.eadd44b0.chunk.js"
+            },
+            "Patterns": null
+          },
+          "787.eadd44b0.chunk.js.map": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "js/787.eadd44b0.chunk.js.map"
+            },
+            "Patterns": null
+          },
+          "main.0c2009bc.js": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "js/main.0c2009bc.js"
+            },
+            "Patterns": null
+          },
+          "main.0c2009bc.js.LICENSE.txt": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "js/main.0c2009bc.js.LICENSE.txt"
+            },
+            "Patterns": null
+          },
+          "main.0c2009bc.js.map": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "js/main.0c2009bc.js.map"
+            },
+            "Patterns": null
+          }
+        },
+        "Asset": null,
+        "Patterns": null
+      },
+      "manifest.json": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "manifest.json"
+        },
+        "Patterns": null
+      },
+      "reset-css.css": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "reset-css.css"
+        },
+        "Patterns": null
+      },
+      "robots.txt": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "robots.txt"
+        },
+        "Patterns": null
+      },
+      "site.webmanifest": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "site.webmanifest"
+        },
+        "Patterns": null
+      },
+      "Views": {
+        "Children": {
+          "index.html": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "Views/index.html"
+            },
+            "Patterns": null
+          }
+        },
+        "Asset": null,
+        "Patterns": null
+      }
+    },
+    "Asset": null,
+    "Patterns": [
+      {
+        "ContentRootIndex": 0,
+        "Pattern": "**",
+        "Depth": 0
+      }
+    ]
+  }
+}
