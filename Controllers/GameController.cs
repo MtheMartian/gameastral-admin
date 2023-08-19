@@ -70,18 +70,9 @@ namespace GameStarBackend.Api.Controllers
         [HttpGet]
         public async Task<List<Game>> Get()
         {
-            List<Game> randomizedGames = new();
-            Random random = new Random();
             List<Game> games = await _gamesService.GetAsync();
-            while(randomizedGames.Count != games.Count)
-            {
-                var randomNum = random.Next(games.Count);
-                if (!randomizedGames.Contains(games[randomNum]))
-                {
-                    randomizedGames.Add(games[randomNum]);
-                }
-            }
-            return randomizedGames;
+            
+            return games;
         }
 
         [EnableCors("_allowedOrigins")]

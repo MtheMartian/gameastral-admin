@@ -53,7 +53,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: AllowedOrigins,
         policy =>
         {
-            policy.WithOrigins("https://gameastral-057014ee9b02.herokuapp.com")
+            policy.WithOrigins("https://gameastral-057014ee9b02.herokuapp.com", "http://localhost:3000")
             .AllowAnyMethod()
             .AllowAnyHeader();
         });

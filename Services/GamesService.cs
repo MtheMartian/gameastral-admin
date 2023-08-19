@@ -7,6 +7,8 @@ using System.Runtime.CompilerServices;
 using System.Text.Json;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
+using AlgoPrac;
+using GameStarBackend.DSA;
 
 namespace GameStarBackend.Api.Services
 {
@@ -78,8 +80,26 @@ namespace GameStarBackend.Api.Services
             cloudinary = new Cloudinary(cloudinaryGSSettings["CloudinaryUrl"]);
         }
 
-        public async Task<List<Game>> GetAsync() =>
-            await _gamesCollection.Find(_ => true).ToListAsync();
+        public async Task<List<Game>> GetAsync()
+        {
+            var games = await _gamesCollection.Find(_ => true).ToListAsync();
+            BinarySearchTree<Game> searchTree = new BinarySearchTree<Game>();
+            foreach (var game in games)
+            {
+                long unixDate = DateTimeOffset.Parse(game.ReleaseDate).ToUnixTimeMilliseconds();
+                searchTree.Insert(unixDate, game);
+            }
+
+            var returnedNodes = searchTree.Traverse();
+
+            List<Game> results = new List<Game>();
+            foreach(var node in returnedNodes)
+            {
+                results.Add(node.Item);
+            }
+
+            return results;
+        }
 
         public async Task<Game?> GetAsync(string id) => 
             await _gamesCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
@@ -108,7 +128,7 @@ namespace GameStarBackend.Api.Services
 
             if(games.Count <= 3)
             {
-                while(games.Count != 5)
+                while(games.Count < 5)
                 {
                     var randomTitle = randomNum.Next(titles.Count);
                     if (!games.Contains(titles[randomTitle]))
@@ -122,12 +142,35 @@ namespace GameStarBackend.Api.Services
 
         public async Task<List<Game>> GetTitles(string entry)
         {
+            var list = await this.GetAsync();
+
             if(entry != "{Empty}")
             {
-                return await _gamesCollection.Find(x => x.GameTitle.ToLower().Contains(entry)).ToListAsync();
+                Dictionary<string, Game> gameFinder = new Dictionary<string, Game>();
+                TrieTree trieTree = new TrieTree();
+                List<Game> games = new List<Game>();
+
+                foreach (Game game in list)
+                {
+                    gameFinder.Add(game.GameTitle.ToLower(), game);
+                    trieTree.Insert(game.GameTitle);
+                }
+
+                var foundTitles = trieTree.AutoComplete(entry);
+                foreach (var title in foundTitles)
+                {
+                    gameFinder.TryGetValue(title, out Game? game);
+
+                    if (game != null)
+                    {
+                        games.Add(game);
+                    }
+                }
+
+                return games;
             }
-            return await _gamesCollection.Find(_ => true).ToListAsync();
-            
+
+            return list;   
         }
 
         public async Task<List<Game>> SimilarTitles(string gameId)

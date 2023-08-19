@@ -8,5 +8,7 @@
         public string ReviewsCollectionName { get; set; } = null!;
         public string AdminsCollectionName { get; set; } = null!;
         public string KeysCollectionName { get; set; } = null!;
+        public string TeamCollectionName { get; set; } = null!;
+        public string DevelopersCollectionName { get; set; } = null!;
     }
 }
