@@ -7,6 +7,7 @@ using System.Runtime.Intrinsics.Arm;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
+using GameStarBackend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddSingleton<GamesService>();
 builder.Services.AddSingleton<ReviewsService>();
 builder.Services.AddSingleton<AdminsService>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<CloudinaryService>();
+builder.Services.AddScoped<TeamService>();
 
 builder.Services.AddSingleton<AuthProperties>();
 

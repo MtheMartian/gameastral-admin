@@ -26,11 +26,14 @@ namespace GameStarBackend.Api.Controllers
     {
         private readonly GamesService _gamesService;
         private readonly AuthProperties _authProps;
+        private readonly CloudinaryService _cloudinaryService;
         
-        public GamesController(GamesService gamesService, AuthProperties authProps)
+        public GamesController(GamesService gamesService, AuthProperties authProps,
+                                CloudinaryService cloudinaryService)
         {
             _gamesService = gamesService; 
             _authProps = authProps;
+            _cloudinaryService = cloudinaryService;
         }
             
         public async Task<Game> GetRequestBody()
@@ -165,8 +168,7 @@ namespace GameStarBackend.Api.Controllers
             {
                 return _authProps.ChallengeIt();
             }
-            var imgFile = await GetFilesFromRequest();
-            await _gamesService.ChangeThumbnail(imgFile, id);
+            await _cloudinaryService.ReplaceImage(HttpContext, id, "game");
             return Redirect(Links.gsAdminPage);
         }
 

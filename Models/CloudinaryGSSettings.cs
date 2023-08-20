@@ -2,9 +2,10 @@
 {
     public class CloudinaryGSSettings
     {
-        public string CloudName { get; set; } = null!;
-        public string ApiKey { get; set; } = null!;
-        public string ApiSecret { get; set; } = null!;
-        public string CloudinaryUrl { get; set; } = null!;
+        public const string CloudinaryGS = "CloudinaryGS";
+        public string CloudName { get; set; } = String.Empty;
+        public string ApiKey { get; set; } = String.Empty;
+        public string ApiSecret { get; set; } = String.Empty;
+        public string CloudinaryUrl { get; set; } = String.Empty;
     }
 }

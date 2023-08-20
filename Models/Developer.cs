@@ -11,5 +11,6 @@ namespace GameStarBackend.Models
         public string Name { get; set; } = "N/A";
         public string Logo { get; set; } = "N/A";
         public string Info { get; set; } = "N/A";
+        public string CloudinaryId { get; set; } = "";
     }
 }

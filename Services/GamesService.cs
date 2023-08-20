@@ -9,13 +9,13 @@ using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using AlgoPrac;
 using GameStarBackend.DSA;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GameStarBackend.Api.Services
 {
     public class GamesService
     {
         private readonly IMongoCollection<Game> _gamesCollection;
-        private readonly Cloudinary cloudinary;
         private ResourceType image;
 
         public bool CompareDate(string date, string typeDate, int min, int max)
@@ -27,7 +27,7 @@ namespace GameStarBackend.Api.Services
             switch (typeDate.ToLower())
             {
                 case "year":
-                    if(year >= min && year <= max)
+                    if (year >= min && year <= max)
                     {
                         return true;
                     }
@@ -50,7 +50,7 @@ namespace GameStarBackend.Api.Services
 
                 case "day":
                     int currentDay = currentDate.Day;
-                    int titleDay = titleDate.Day;   
+                    int titleDay = titleDate.Day;
                     if (titleDay >= (currentDay + min) && titleDay <= (currentDay + max) && year == 0)
                     {
                         return true;
@@ -65,8 +65,7 @@ namespace GameStarBackend.Api.Services
         }
 
         public GamesService(
-            IOptions<GameInfoDatabaseSettings> gameInfoDatabaseSettings,
-            IConfiguration cloudinaryGSSettings)
+            IOptions<GameInfoDatabaseSettings> gameInfoDatabaseSettings)
         {
             var mongoClient = new MongoClient(
                 gameInfoDatabaseSettings.Value.ConnectionString);
@@ -76,8 +75,6 @@ namespace GameStarBackend.Api.Services
 
             _gamesCollection = mongoDatabase.GetCollection<Game>(
                 gameInfoDatabaseSettings.Value.GamesCollectionName);
-
-            cloudinary = new Cloudinary(cloudinaryGSSettings["CloudinaryUrl"]);
         }
 
         public async Task<List<Game>> GetAsync()
@@ -93,7 +90,7 @@ namespace GameStarBackend.Api.Services
             var returnedNodes = searchTree.Traverse();
 
             List<Game> results = new List<Game>();
-            foreach(var node in returnedNodes)
+            foreach (var node in returnedNodes)
             {
                 results.Add(node.Item);
             }
@@ -101,7 +98,7 @@ namespace GameStarBackend.Api.Services
             return results;
         }
 
-        public async Task<Game?> GetAsync(string id) => 
+        public async Task<Game?> GetAsync(string id) =>
             await _gamesCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
         public async Task CreateAsync(Game newGame) =>
@@ -117,8 +114,8 @@ namespace GameStarBackend.Api.Services
         {
             List<Game> games = new();
             var randomNum = new Random();
-            var titles = await _gamesCollection.Find(_=> true).ToListAsync();
-            for(int i = 0; i < titles.Count; i++)
+            var titles = await _gamesCollection.Find(_ => true).ToListAsync();
+            for (int i = 0; i < titles.Count; i++)
             {
                 if (CompareDate(titles[i].ReleaseDate, "month", 1, 3))
                 {
@@ -126,9 +123,9 @@ namespace GameStarBackend.Api.Services
                 }
             }
 
-            if(games.Count <= 3)
+            if (games.Count <= 3)
             {
-                while(games.Count < 5)
+                while (games.Count < 5)
                 {
                     var randomTitle = randomNum.Next(titles.Count);
                     if (!games.Contains(titles[randomTitle]))
@@ -144,7 +141,7 @@ namespace GameStarBackend.Api.Services
         {
             var list = await this.GetAsync();
 
-            if(entry != "{Empty}")
+            if (entry != "{Empty}")
             {
                 Dictionary<string, Game> gameFinder = new Dictionary<string, Game>();
                 TrieTree trieTree = new TrieTree();
@@ -170,7 +167,7 @@ namespace GameStarBackend.Api.Services
                 return games;
             }
 
-            return list;   
+            return list;
         }
 
         public async Task<List<Game>> SimilarTitles(string gameId)
@@ -179,9 +176,9 @@ namespace GameStarBackend.Api.Services
             Game currentTitle = await _gamesCollection.Find(x => x.Id == gameId).FirstOrDefaultAsync();
             List<Game> allTitles = await _gamesCollection.Find(x => x.Id != gameId).ToListAsync();
 
-            for(int i = 0; i < currentTitle.Tags.Length; i++)
+            for (int i = 0; i < currentTitle.Tags.Length; i++)
             {
-                for(int j = 0; j < allTitles.Count; j++)
+                for (int j = 0; j < allTitles.Count; j++)
                 {
                     if (allTitles[j].Tags.Contains(currentTitle.Tags[i]) && !similarTitles.Contains(allTitles[j]))
                     {
@@ -191,58 +188,6 @@ namespace GameStarBackend.Api.Services
             }
 
             return similarTitles;
-        }
-
-        public async Task ChangeThumbnail(string filePath, string id)
-        {
-            var game = await _gamesCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-            cloudinary.Api.Secure = true;
-
-            if (game.CloudinaryId != String.Empty)
-            {
-                var deleteParams = new DeletionParams(game.CloudinaryId)
-                {
-                    ResourceType = image,
-                };
-
-                var response = await cloudinary.DestroyAsync(deleteParams);
-                var res = JsonSerializer.Deserialize<CloudinaryResults>(response.JsonObj.ToString());
-
-                if (res.result == "ok")
-                {
-                    var uploadParams = new ImageUploadParams()
-                    {
-                        File = new FileDescription(filePath),
-                        UseFilename = true,
-                        UniqueFilename = false,
-                        Overwrite = true,
-                    };
-
-                    var uploadResult = await cloudinary.UploadAsync(uploadParams);
-                    var result = JsonSerializer.Deserialize<CloudinaryResults>(uploadResult.JsonObj.ToString());
-                    game.CloudinaryId = result.public_id;
-                    game.ImgURL = result.secure_url;
-                    await _gamesCollection.ReplaceOneAsync(x => x.Id == id, game);
-                }
-            }
-            else
-            {
-                var uploadParams = new ImageUploadParams()
-                {
-                    File = new FileDescription(filePath),
-                    UseFilename = true,
-                    UniqueFilename = false,
-                    Overwrite = true,
-                };
-
-                var uploadResult = await cloudinary.UploadAsync(uploadParams);
-                var result = JsonSerializer.Deserialize<CloudinaryResults>(uploadResult.JsonObj.ToString());
-
-                game.CloudinaryId = result.public_id;
-                game.ImgURL = result.secure_url;
-                await _gamesCollection.ReplaceOneAsync(x => x.Id == id, game);
-                Console.WriteLine(uploadResult.JsonObj);
-            }           
         }
     }
 }

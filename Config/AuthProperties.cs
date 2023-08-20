@@ -10,6 +10,11 @@ namespace GameStarBackend.Api.Config
 {
     public class AuthProperties
     {
+        /// <summary>
+        /// Check if user is authenticated.
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
         public async Task<AuthenticateResult> IsLoggedIn(HttpContext ctx)
         {
             var result = await ctx.AuthenticateAsync("default");
@@ -21,6 +26,10 @@ namespace GameStarBackend.Api.Config
             return result;
         }
 
+        /// <summary>
+        /// Redirects user to sign in page.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ChallengeIt()
         {
             return new RedirectResult("/signin", false);
