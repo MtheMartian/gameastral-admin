@@ -19,6 +19,7 @@ namespace GameStarBackend.Api.Models
         public string Summary { get; set; } = "";
         public string Publisher { get; set; } = "";
         public string ReleaseDate { get; set; } = "";
+        public string[] TeamMembers { get; set; } = { "" };
         public Dictionary<string, string> PcLinks { get; set; } = new Dictionary<string, string>()
         {
             ["steam"] = "",

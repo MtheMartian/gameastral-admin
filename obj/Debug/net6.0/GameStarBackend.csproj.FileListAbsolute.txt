@@ -83,3 +83,4 @@ C:\Users\Rapier\source\repos\GameStarBackend\GameStarBackend\obj\Debug\net6.0\Ga
 C:\Users\Rapier\source\repos\GameStarBackend\GameStarBackend\obj\Debug\net6.0\GameStarBackend.genruntimeconfig.cache
 C:\Users\Rapier\source\repos\GameStarBackend\GameStarBackend\obj\Debug\net6.0\ref\GameStarBackend.dll
 C:\Users\Rapier\source\repos\GameStarBackend\GameStarBackend\bin\Debug\net6.0\GameStarBackend.staticwebassets.runtime.json
+C:\Users\Rapier\source\repos\GameStarBackend\GameStarBackend\bin\Debug\net6.0\.filenesting.json

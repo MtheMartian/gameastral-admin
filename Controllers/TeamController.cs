@@ -58,15 +58,16 @@ namespace GameStarBackend.Controllers
             return await _teamService.GetAsync(ids);
         }
 
+        [EnableCors("_allowedOrigins")]
         [HttpPost]
         public async Task<ActionResult<string>> CreateMember()
         {
-            var result = await _authProps.IsLoggedIn(HttpContext);
+            //var result = await _authProps.IsLoggedIn(HttpContext);
 
-            if (!result.Succeeded)
-            {
-                return _authProps.ChallengeIt();
-            }
+            //if (!result.Succeeded)
+            //{
+            //    return _authProps.ChallengeIt();
+            //}
 
             var rqBody = await this.ReturnBodyRequest();
             Team? team = JsonSerializer.Deserialize<Team>(rqBody);
@@ -83,12 +84,12 @@ namespace GameStarBackend.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<string>> UpdateMember(string id)
         {
-            var result = await _authProps.IsLoggedIn(HttpContext);
+            //var result = await _authProps.IsLoggedIn(HttpContext);
 
-            if (!result.Succeeded)
-            {
-                return _authProps.ChallengeIt();
-            }
+            //if (!result.Succeeded)
+            //{
+            //    return _authProps.ChallengeIt();
+            //}
 
             var rqBody = await this.ReturnBodyRequest();
             Team? team = JsonSerializer.Deserialize<Team>(rqBody);
@@ -103,29 +104,37 @@ namespace GameStarBackend.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<string>> DeleteMember(string id)
         {
-            var result = await _authProps.IsLoggedIn(HttpContext);
+            //var result = await _authProps.IsLoggedIn(HttpContext);
 
-            if (!result.Succeeded)
+            //if (!result.Succeeded)
+            //{
+            //    return _authProps.ChallengeIt();
+            //}
+            var team = await _teamService.GetAsync(id);
+
+            var result = await _cloudinaryService.DeleteImage(team);
+
+            if(result == null || result != "ok")
             {
-                return _authProps.ChallengeIt();
+                return BadRequest(result);
             }
 
             await _teamService.RemoveAsync(id);
             return Ok();
         }
 
-        [HttpPut("upload/{id}")]
+        [HttpPost("upload/{id}")]
         public async Task<ActionResult> UploadPicture(string id)
         {
-            var result = await _authProps.IsLoggedIn(HttpContext);
+            //var result = await _authProps.IsLoggedIn(HttpContext);
 
-            if (!result.Succeeded)
-            {
-                return _authProps.ChallengeIt();
-            }
+            //if (!result.Succeeded)
+            //{
+            //    return _authProps.ChallengeIt();
+            //}
 
             await _cloudinaryService.ReplaceImage(HttpContext, id, "team");
             return Ok();

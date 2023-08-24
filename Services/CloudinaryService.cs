@@ -173,6 +173,20 @@ namespace GameStarBackend.Api.Services
                 case "publisher":
                     break;
             }
+
+        }
+
+        public async Task<string> DeleteImage(Team team)
+        {
+            var deleteParams = new DeletionParams(team.CloudinaryId)
+            {
+                ResourceType = ResourceType.Image
+            };
+
+            var response = await cloudinary.DestroyAsync(deleteParams);
+            var res = JsonSerializer.Deserialize<CloudinaryResults>(response.JsonObj.ToString());
+
+            return res.result;
         }
     }
 }

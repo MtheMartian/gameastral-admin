@@ -74,7 +74,7 @@ DotNetEnv.Env.Load();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseCors();
+app.UseCors(AllowedOrigins);
 
 app.UseAuthorization();
 
