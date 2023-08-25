@@ -189,5 +189,12 @@ namespace GameStarBackend.Api.Controllers
 
             return Redirect(Links.gsAdminPage);
         }
+
+        [EnableCors("_allowedOrigins")]
+        [HttpGet("genre")]
+        public async Task<List<string>> GetGenres(string entry = " ")
+        {
+            return await _gamesService.GetGenres(entry);
+        }
     }
 }

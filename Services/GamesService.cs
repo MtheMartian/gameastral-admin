@@ -10,6 +10,7 @@ using CloudinaryDotNet.Actions;
 using AlgoPrac;
 using GameStarBackend.DSA;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 
 namespace GameStarBackend.Api.Services
 {
@@ -188,6 +189,36 @@ namespace GameStarBackend.Api.Services
             }
 
             return similarTitles;
+        }
+
+        public async Task<List<string>> GetGenres(string genre)
+        {
+            List<string> genres = new();
+            TrieTree trie = new TrieTree();
+            List<Game> games = await this.GetAsync();
+
+            for (int i = 0; i < games.Count; i++)
+            {
+                for (int j = 0; j < games[i].Tags.Length; j++)
+                {
+                    if (!genres.Contains(games[i].Tags[j]))
+                    {
+                        genres.Add(games[i].Tags[j]);
+                    }
+                }
+            }
+
+            if (genre == "{Empty}")
+            {
+                return genres;
+            }
+
+            foreach (string str in genres)
+            {
+                trie.Insert(str);
+            }
+
+            return trie.AutoComplete(genre);          
         }
     }
 }
