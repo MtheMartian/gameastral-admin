@@ -72,8 +72,6 @@ public class TrieTree
 
     public void Insert(string word)
     {
-        word = word.ToLower();
-
         var node = this.root;
 
         foreach(char c in word)
@@ -103,7 +101,12 @@ public class TrieTree
         {
             char charToAdd = char.IsWhiteSpace(c) ? ' ' : c;
 
-            if (node.ChildrenMap.TryGetValue(c, out TrieNode<char>? child))
+            if(!node.ChildrenMap.TryGetValue(c, out _))
+            {
+                charToAdd = Char.ToUpper(charToAdd);
+            }
+
+            if (node.ChildrenMap.TryGetValue(charToAdd, out TrieNode<char>? child))
             {
                 node = child;
                 doubly.Insert(charToAdd, node);

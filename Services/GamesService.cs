@@ -150,7 +150,7 @@ namespace GameStarBackend.Api.Services
 
                 foreach (Game game in list)
                 {
-                    gameFinder.Add(game.GameTitle.ToLower(), game);
+                    gameFinder.Add(game.GameTitle, game);
                     trieTree.Insert(game.GameTitle);
                 }
 
