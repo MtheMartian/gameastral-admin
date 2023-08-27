@@ -131,11 +131,11 @@ namespace GameStarBackend.Api.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Create()
         {
-            //var result = await _authProps.IsLoggedIn(HttpContext);
-            //if (!result.Succeeded)
-            //{
-            //    return _authProps.ChallengeIt();   
-            //}
+            var result = await _authProps.IsLoggedIn(HttpContext);
+            if (!result.Succeeded)
+            {
+                return _authProps.ChallengeIt();
+            }
 
             var gameObject = await GetRequestBody();
             if (gameObject == null)
@@ -150,25 +150,24 @@ namespace GameStarBackend.Api.Controllers
         [HttpPost("[action]/{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            //var result = await _authProps.IsLoggedIn(HttpContext);
-            //if (!result.Succeeded)
-            //{
-            //    return _authProps.ChallengeIt();
-            //}
+            var result = await _authProps.IsLoggedIn(HttpContext);
+            if (!result.Succeeded)
+            {
+                return _authProps.ChallengeIt();
+            }
             await _gamesService.RemoveAsync(id);
             return Redirect(Links.gsAdminPage);
 
         }
 
-        [EnableCors("_allowedOrigins")]
         [HttpPost("[action]/{id}")]
         public async Task<IActionResult> Upload(string id)
         {
-            //var result = await _authProps.IsLoggedIn(HttpContext);
-            //if (!result.Succeeded)
-            //{
-            //    return _authProps.ChallengeIt();
-            //}
+            var result = await _authProps.IsLoggedIn(HttpContext);
+            if (!result.Succeeded)
+            {
+                return _authProps.ChallengeIt();
+            }
             await _cloudinaryService.ReplaceImage(HttpContext, id, "game");
             return Redirect(Links.gsAdminPage);
         }
@@ -176,11 +175,11 @@ namespace GameStarBackend.Api.Controllers
         [HttpPut("[action]/cat/{id}")]
         public async Task<IActionResult> Update(string id)
         {
-            //var result = await _authProps.IsLoggedIn(HttpContext);
-            //if (!result.Succeeded)
-            //{
-            //    return _authProps.ChallengeIt();
-            //}
+            var result = await _authProps.IsLoggedIn(HttpContext);
+            if (!result.Succeeded)
+            {
+                return _authProps.ChallengeIt();
+            }
             var newGame = await GetRequestBody();
 
             newGame.Id = id;
